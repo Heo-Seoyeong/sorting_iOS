@@ -35,11 +35,23 @@ class MainViewController: UIViewController {
                 compareNum(indexA: indexB-1, indexB: indexB)
             }
         }
-        
-        print("sortedNumber : \(sortedNumber)")
+        print("Bubble Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerSelection(_ sender: Any) {
+        sortedNumber = number
+        for i in 0..<sortedNumber.count {
+            let indexA = sortedNumber.count - i
+            var max = 0
+            for j in 1..<indexA {
+                let indexB = j
+                if sortedNumber[indexB] > sortedNumber[max] {
+                    max = indexB
+                }
+            }
+            compareNum(indexA: max, indexB: indexA-1)
+        }
+        print("Selection Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerInsertion(_ sender: Any) {
