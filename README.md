@@ -11,3 +11,8 @@ Selection sort 동작 버튼 생성
 
 ## 4차 커밋
 Insertion sort 동작 버튼 생성
+
+## 5차 커밋
+Merge sort 동작 버튼 생성
+Quick sort 동작 버튼 생성
+숫자 패드를 통한 입력값 생성
