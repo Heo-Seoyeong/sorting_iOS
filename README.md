@@ -5,3 +5,6 @@
 
 ## 2차 커밋
 Bubble sort 동작 버튼 생성
+
+## 3차 커밋
+Selection sort 동작 버튼 생성
