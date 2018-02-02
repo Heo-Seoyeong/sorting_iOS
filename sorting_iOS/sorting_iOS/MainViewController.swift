@@ -11,19 +11,32 @@ import UIKit
 class MainViewController: UIViewController {
 
     var number = [5, 9, 3, 6, 8, 4, 1, 2, 7]
+    var sortedNumber: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func compareNum(indexA: Int, indexB: Int) {
+        if sortedNumber[indexA] > sortedNumber[indexB] {
+            let tmp = sortedNumber[indexA]
+            sortedNumber[indexA] = sortedNumber[indexB]
+            sortedNumber[indexB] = tmp
+        }
     }
 
     @IBAction func handlerBubble(_ sender: Any) {
+        sortedNumber = number
+        for i in 0..<sortedNumber.count {
+            let indexA = sortedNumber.count - i
+            for j in 1..<indexA {
+                let indexB = j
+                compareNum(indexA: indexB-1, indexB: indexB)
+            }
+        }
+        
+        print("sortedNumber : \(sortedNumber)")
     }
     
     @IBAction func handlerSelection(_ sender: Any) {

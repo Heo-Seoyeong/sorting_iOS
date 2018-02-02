@@ -190,8 +190,8 @@
                                             <action selector="handlerHeap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gaz-yC-PPe"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-eE-1NT">
-                                        <rect key="frame" x="94" y="75" width="94" height="75"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-eE-1NT">
+                                        <rect key="frame" x="95" y="75" width="94" height="75"/>
                                         <color key="backgroundColor" red="0.92986527740976277" green="0.94367123237629758" blue="0.95304568527918776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="hIS-nT-I58"/>
