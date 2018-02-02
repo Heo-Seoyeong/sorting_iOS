@@ -13,7 +13,6 @@
 		362B334D202438F6000FF3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362B334C202438F6000FF3FD /* Assets.xcassets */; };
 		362B3350202438F6000FF3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362B334E202438F6000FF3FD /* LaunchScreen.storyboard */; };
 		362B335B202438F6000FF3FD /* sorting_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B335A202438F6000FF3FD /* sorting_iOSTests.swift */; };
-		362B336620243C8E000FF3FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B336520243C8E000FF3FD /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +36,6 @@
 		362B3356202438F6000FF3FD /* sorting_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sorting_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		362B335A202438F6000FF3FD /* sorting_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sorting_iOSTests.swift; sourceTree = "<group>"; };
 		362B335C202438F6000FF3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		362B336520243C8E000FF3FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			children = (
 				362B3345202438F6000FF3FD /* AppDelegate.swift */,
 				362B3347202438F6000FF3FD /* MainViewController.swift */,
-				362B336520243C8E000FF3FD /* DetailViewController.swift */,
 				362B3349202438F6000FF3FD /* Main.storyboard */,
 				362B334C202438F6000FF3FD /* Assets.xcassets */,
 				362B334E202438F6000FF3FD /* LaunchScreen.storyboard */,
@@ -202,7 +199,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				362B336620243C8E000FF3FD /* DetailViewController.swift in Sources */,
 				362B3348202438F6000FF3FD /* MainViewController.swift in Sources */,
 				362B3346202438F6000FF3FD /* AppDelegate.swift in Sources */,
 			);

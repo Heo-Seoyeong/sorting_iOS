@@ -8,13 +8,16 @@
 
 import UIKit
 
+// View Cycle
 class MainViewController: UIViewController {
 
-    var number = [5, 9, 3, 6, 8, 4, 1, 2, 7]
-    var sortedNumber: [Int] = []
     @IBOutlet var numberButton: [UIButton]!
     @IBOutlet var numberLabel: [UILabel]!
+    
+    var number = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var sortedNumber: [Int] = []
     var index = -1
+    var sortingName = "Not Sorting"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,13 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("\(sortingName) : \(number)")
     }
+   
+}
+
+// 숫자 패드 입력
+extension MainViewController {
     
     func numberKeypad(numA: Int) {
         if index == 8 {
@@ -72,6 +81,11 @@ class MainViewController: UIViewController {
         numberKeypad(numA: 9)
     }
     
+}
+
+// sort 버튼
+extension MainViewController {
+    
     func compareNum(indexA: Int, indexB: Int) {
         if sortedNumber[indexA] > sortedNumber[indexB] {
             let tmp = sortedNumber[indexA]
@@ -79,58 +93,77 @@ class MainViewController: UIViewController {
             sortedNumber[indexB] = tmp
         }
     }
-
+    
     @IBAction func handlerBubble(_ sender: Any) {
-        sortedNumber = number
-        for i in 0..<sortedNumber.count {
-            let indexA = sortedNumber.count - i
+        sortingName = "Bubble"
+        for i in 0..<number.count {
+            let indexA = number.count - i
             for j in 1..<indexA {
                 let indexB = j
-                compareNum(indexA: indexB-1, indexB: indexB)
+                if number[indexB-1] > number[indexB] {
+                    let tmp = number[indexB-1]
+                    number[indexB-1] = number[indexB]
+                    number[indexB] = tmp
+                    numberLabel[indexB-1].text = "\(number[indexB-1])"
+                    numberLabel[indexB].text = "\(number[indexB])"
+                    viewWillAppear(false)
+                }
             }
         }
-        print("number : \(number)")
-        print("Bubble Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerSelection(_ sender: Any) {
+        sortingName = "Selection"
         sortedNumber = number
-        for i in 0..<sortedNumber.count {
-            let indexA = sortedNumber.count - i
+        for i in 0..<number.count {
+            let indexA = number.count - i
             var min = 0
             for j in 1..<indexA {
                 let indexB = j
-                if sortedNumber[indexB] > sortedNumber[min] {
+                if number[indexB] > number[min] {
                     min = indexB
                 }
             }
-            compareNum(indexA: min, indexB: indexA-1)
+            
+            if number[min] > number[indexA-1] {
+                let tmp = number[min]
+                number[min] = number[indexA-1]
+                number[indexA-1] = tmp
+                
+                numberLabel[min].text = "\(number[min])"
+                numberLabel[indexA-1].text = "\(number[indexA-1])"
+                viewWillAppear(false)
+            }
         }
-        print("Selection Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerInsertion(_ sender: Any) {
-        sortedNumber = number
-        for i in 1..<sortedNumber.count {
+        sortingName = "Insertion"
+        for i in 1..<number.count {
             let indexA = i
             for j in 0..<indexA {
                 let indexB = indexA - j
-                if sortedNumber[indexB-1] > sortedNumber[indexB] {
-                    let tmp = sortedNumber[indexB-1]
-                    sortedNumber[indexB-1] = sortedNumber[indexB]
-                    sortedNumber[indexB] = tmp
+                if number[indexB-1] > number[indexB] {
+                    let tmp = number[indexB-1]
+                    number[indexB-1] = number[indexB]
+                    number[indexB] = tmp
+                    numberLabel[indexB-1].text = "\(number[indexB-1])"
+                    numberLabel[indexB].text = "\(number[indexB])"
+                    viewWillAppear(false)
                 } else {
                     break
                 }
             }
         }
-        print("Insertion Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerMerge(_ sender: Any) {
+        sortingName = "Merge"
         sortedNumber = number
-        sortedNumber = mergeSort(array: sortedNumber)
-        print("Merge Sort : \(sortedNumber)")
+        number = mergeSort(array: sortedNumber)
+        for num in 0..<number.count {
+            numberLabel[num].text = "\(number[num])"
+        }
     }
     
     func mergeSort(array: [Int]) -> [Int] {
@@ -142,7 +175,10 @@ class MainViewController: UIViewController {
         let leftArray = mergeSort(array: Array(array[0..<middleIndex]))
         let rightArray = mergeSort(array: Array(array[middleIndex..<array.count]))
         
-        return merge(left: leftArray, right: rightArray)
+        number = merge(left: leftArray, right: rightArray)
+        viewWillAppear(false)
+        
+        return number
     }
     
     func merge(left: [Int], right: [Int]) -> [Int] {
@@ -186,9 +222,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func handlerQuick(_ sender: Any) {
+        sortingName = "Quick"
         sortedNumber = number
-        sortedNumber = quicksort(array: sortedNumber)
-        print("Quick Sort : \(sortedNumber)")
+        number = quicksort(array: sortedNumber)
     }
     
     func quicksort(array: [Int]) -> [Int] {
@@ -203,7 +239,24 @@ class MainViewController: UIViewController {
         let equal = array.filter { $0 == pivot }
         let greater = array.filter { $0 > pivot }
         
-        return quicksort(array: less) + equal + quicksort(array: greater)
+        let arrayQuick = quicksort(array: less) + equal + quicksort(array: greater)
+        number = arrayQuick
+        for num in 0..<arrayQuick.count {
+            numberLabel[num].text = "\(arrayQuick[num])"
+        }
+        viewWillAppear(false)
+        
+        return arrayQuick
+    }
+    
+    @IBAction func handlerReset(_ sender: Any) {
+        sortingName = "Not Sorting"
+        index = -1
+        for num in 0..<number.count {
+            numberLabel[num].text = "0"
+            number[num] = 0
+        }
+
+        viewWillAppear(false)
     }
 }
-
