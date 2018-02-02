@@ -8,3 +8,6 @@ Bubble sort 동작 버튼 생성
 
 ## 3차 커밋
 Selection sort 동작 버튼 생성
+
+## 4차 커밋
+Insertion sort 동작 버튼 생성
