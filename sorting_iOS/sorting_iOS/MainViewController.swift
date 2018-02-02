@@ -55,6 +55,21 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func handlerInsertion(_ sender: Any) {
+        sortedNumber = number
+        for i in 1..<sortedNumber.count {
+            let indexA = i
+            for j in 0..<indexA {
+                let indexB = indexA - j
+                if sortedNumber[indexB-1] > sortedNumber[indexB] {
+                    let tmp = sortedNumber[indexB-1]
+                    sortedNumber[indexB-1] = sortedNumber[indexB]
+                    sortedNumber[indexB] = tmp
+                } else {
+                    break
+                }
+            }
+        }
+        print("Insertion Sort : \(sortedNumber)")
     }
     
     @IBAction func handlerMerge(_ sender: Any) {
